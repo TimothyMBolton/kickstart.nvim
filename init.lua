@@ -400,6 +400,8 @@ vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true
 vim.api.nvim_set_keymap('i', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n','<leader>ff', ':Format<cr>', { noremap = true, silent = true })
+
 
 vim.cmd('colorscheme cyberdream')
 
