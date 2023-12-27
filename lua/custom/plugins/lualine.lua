@@ -2,7 +2,7 @@
 -- Author: lokesh-krishna
 -- MIT license, see LICENSE for more details.
 
--- stylua: ignorelocal 
+-- stylua: ignorelocal
 colors = {
   blue   = '#80a0ff',
   cyan   = '#79dac8',
@@ -32,24 +32,24 @@ local bubbles_theme = {
 }
 
 return {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = true,
-        theme = bubbles_theme,
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-      },
+  -- Set lualine as statusline
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+  -- See `:help lualine.txt`
+  opts = {
+    options = {
+      icons_enabled = true,
+      theme = bubbles_theme,
+      component_separators = { left = '', right = '' },
+      section_separators = { left = '', right = '' },
     },
     sections = {
-      lualine_a = { 'copilot' },
+      lualine_a = { 'mode' },
       lualine_b = { 'branch' },
-      lualine_c = { 'filename' },
-      lualine_x = { 'copilot', 'mode' },
+      lualine_c = { 'copilot' },
+      lualine_x = { 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'progress' },
-      lualine_z = { 'location' },
+      lualine_z = { 'location' }
     },
-  }
-
+  },
+}
