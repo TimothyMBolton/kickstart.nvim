@@ -34,7 +34,7 @@ local bubbles_theme = {
 return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
   -- See `:help lualine.txt`
   opts = {
     options = {
@@ -47,9 +47,10 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch' },
       lualine_c = { 'copilot' },
-      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_x = { 'encoding',  'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' }
     },
   },
+  config = true,
 }
