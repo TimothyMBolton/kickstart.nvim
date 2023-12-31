@@ -4,13 +4,13 @@
 
 -- stylua: ignorelocal
 colors = {
-  blue   = '#80a0ff',
-  cyan   = '#79dac8',
-  black  = '#080808',
-  white  = '#c6c6c6',
-  red    = '#ff5189',
+  blue = '#80a0ff',
+  cyan = '#79dac8',
+  black = '#080808',
+  white = '#c6c6c6',
+  red = '#ff5189',
   violet = '#d183e8',
-  grey   = '#303030',
+  grey = '#303030',
 }
 
 local bubbles_theme = {
@@ -47,9 +47,9 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch' },
       lualine_c = { 'copilot' },
-      lualine_x = { 'encoding',  'filetype' },
+      lualine_x = { 'encoding', 'filetype' },
       lualine_y = { 'progress' },
-      lualine_z = { 'location' }
+      lualine_z = { 'location' },
     },
   },
   config = true,

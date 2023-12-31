@@ -26,9 +26,9 @@ return {
           i = {
             ['<C-u>'] = false,
             ['<C-d>'] = false,
-          }
-        }
-      }
+          },
+        },
+      },
     }
-  end
+  end,
 }

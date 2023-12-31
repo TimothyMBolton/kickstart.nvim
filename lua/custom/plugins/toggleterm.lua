@@ -1,11 +1,11 @@
-
-return {'akinsho/toggleterm.nvim', version = "*",
+return {
+  'akinsho/toggleterm.nvim',
+  version = '*',
   config = function()
-    require('toggleterm').setup({
+    require('toggleterm').setup {
       open_mapping = [[<M-/>]],
-      direction = "float",
+      direction = 'float',
       insert_mappings = true,
-    })
+    }
   end,
 }
-

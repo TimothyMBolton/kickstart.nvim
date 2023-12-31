@@ -1,2 +1,1 @@
 return { 'tpope/vim-fugitive' }
-
