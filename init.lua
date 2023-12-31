@@ -383,10 +383,6 @@ cmp.setup {
 vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
--- Remap <C-d> and <C-u> in insert mode
-vim.api.nvim_set_keymap('i', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
-
 vim.cmd('colorscheme cyberdream')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
