@@ -1,8 +1,16 @@
 return {
-  "nvimtools/none-ls.nvim",
-  opts = function(_, opts)
-    local nls = require("null-ls")
-    opts.sources = opts.sources or {}
-    table.insert(opts.sources, nls.builtins.formatting.prettier)
+  'nvimtools/none-ls.nvim',
+  config = function()
+    local null_ls = require 'null-ls'
+    null_ls.setup {
+      sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.gopls,
+        null_ls.builtins.diagnostics.eslint,
+      },
+    }
+
+    vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, {})
   end,
 }
