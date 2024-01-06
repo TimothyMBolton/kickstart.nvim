@@ -13,4 +13,21 @@ return {
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
   },
+  lazy = false,
+  config = function()
+    local lspconfig = require 'lspconfig'
+    local mason = require 'mason'
+    local fidget = require 'fidget'
+
+    -- Automatically install LSPs to stdpath for neovim
+    mason.setup()
+
+    -- Useful status updates for LSP
+    fidget.setup({})
+
+    -- Additional lua configuration, makes nvim stuff amazing!
+    require('neodev').setup()
+
+    -- NOTE: This is a workaround for
+  end
 }
