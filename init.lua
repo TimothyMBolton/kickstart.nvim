@@ -66,7 +66,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-require('lazy').setup({  { import = 'custom.plugins' }, }, {})
+require('lazy').setup({ { import = 'custom.plugins' } }, {})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -141,7 +141,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -290,7 +289,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -372,10 +371,87 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "path" },
-    { name = "copilot" }
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'copilot' },
+  },
+}
+
+require('noice').setup {
+  lsp = {
+    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    override = {
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
+      ['cmp.entry.get_documentation'] = true,
+    },
+  },
+  -- you can enable a preset for easier configuration
+  presets = {
+    bottom_search = true,         -- use a classic bottom cmdline for search
+    command_palette = true,       -- position the cmdline and popupmenu together
+    long_message_to_split = true, -- long messages will be sent to a split
+    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false,       -- add a border to hover docs and signature help
+  },
+}
+
+require('overseer').setup()
+
+local overseer = require 'overseer'
+
+overseer.register_template {
+  {
+    -- Required fields
+    name = 'Some Task',
+    builder = function(params)
+      -- This must return an overseer.TaskDefinition
+      return {
+        -- cmd is the only required field
+        cmd = { 'echo' },
+        -- additional arguments for the cmd
+        args = { 'hello', 'world' },
+        -- the name of the task (defaults to the cmd of the task)
+        name = 'Greet',
+        -- set the working directory for the task
+        cwd = '/tmp',
+        -- additional environment variables
+        env = {
+          VAR = 'FOO',
+        },
+        -- the list of components or component aliases to add to the task
+        components = { 'my_custom_component', 'default' },
+        -- arbitrary table of data for your own personal use
+        metadata = {
+          foo = 'bar',
+        },
+      }
+    end,
+    -- Optional fields
+    desc = 'Optional description of task',
+    -- Tags can be used in overseer.run_template()
+    tags = { overseer.TAG.BUILD },
+    params = {
+      -- See :help overseer-params
+    },
+    -- Determines sort order when choosing tasks. Lower comes first.
+    priority = 50,
+    -- Add requirements for this template. If they are not met, the template will not be visible.
+    -- All fields are optional.
+    condition = {
+      -- A string or list of strings
+      -- Only matches when current buffer is one of the listed filetypes
+      filetype = { 'c', 'cpp' },
+      -- A string or list of strings
+      -- Only matches when cwd is inside one of the listed dirs
+      dir = '/home/user/my_project',
+      -- Arbitrary logic for determining if task is available
+      callback = function(search)
+        print(vim.inspect(search))
+        return true
+      end,
+    },
   },
 }
 
@@ -383,7 +459,7 @@ cmp.setup {
 vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
-vim.cmd('colorscheme cyberdream')
+vim.cmd 'colorscheme cyberdream'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
